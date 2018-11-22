@@ -19,7 +19,31 @@ let modifier = process.argv[3];
 
 //the spotify API function
 function spotifyThis(song) {
-    // console.log('this is the song you wanted: ' + song);
+    // default value if nothing follows the spotify-this-song command
+    if (!song) {
+        spotify
+        .search({ type: 'track', query: "Ace of Base" })
+        .then(function(response) {
+            //grabs the first search result
+            let firstResponse = response.tracks.items[0]
+            //stores the name of the artist
+            let artist=firstResponse.artists[0].name;
+            console.log("Artist(s): " + artist);
+            //stores the full name of the song
+            let name = firstResponse.name;
+            console.log('Name of Song: ' + name);
+            //stores the external web link
+            let link= firstResponse.external_urls.spotify;
+            console.log('Spotify Link: ' + link);
+            //stores the album name
+            let albumName = firstResponse.album.name;
+            console.log('Album Name: ' + albumName);
+            
+        })
+        .catch(function(err) {
+            console.log(err);
+        })
+    } else 
     spotify
         .search({ type: 'track', query: song })
         .then(function(response) {
@@ -27,17 +51,16 @@ function spotifyThis(song) {
             let firstResponse = response.tracks.items[0]
             //stores the name of the artist
             let artist=firstResponse.artists[0].name;
-            console.log(artist);
+            console.log("Artist(s): " + artist);
             //stores the full name of the song
             let name = firstResponse.name;
-            console.log(name);
+            console.log('Name of Song: ' + name);
             //stores the external web link
             let link= firstResponse.external_urls.spotify;
-            console.log(link);
+            console.log('Spotify Link: ' + link);
             //stores the album name
             let albumName = firstResponse.album.name;
-            console.log(albumName);
-            
+            console.log('Album Name: ' + albumName);
         })
         .catch(function(err) {
             console.log(err);

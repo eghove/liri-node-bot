@@ -1,3 +1,4 @@
 require("dotenv").config();
 
-var keys = 
+//loads the exported pieces from keys.js
+let keys = require("./keys.js");

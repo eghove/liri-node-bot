@@ -23,7 +23,21 @@ function spotifyThis(song) {
     spotify
         .search({ type: 'track', query: song })
         .then(function(response) {
-            console.log(JSON.stringify(response, null, 2));
+            //grabs the first search result
+            let firstResponse = response.tracks.items[0]
+            //stores the name of the artist
+            let artist=firstResponse.artists[0].name;
+            console.log(artist);
+            //stores the full name of the song
+            let name = firstResponse.name;
+            console.log(name);
+            //stores the external web link
+            let link= firstResponse.external_urls.spotify;
+            console.log(link);
+            //stores the album name
+            let albumName = firstResponse.album.name;
+            console.log(albumName);
+            
         })
         .catch(function(err) {
             console.log(err);

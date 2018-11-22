@@ -19,7 +19,15 @@ let modifier = process.argv[3];
 
 //the spotify API function
 function spotifyThis(song) {
-    console.log('this is the song you wanted: ' + song);
+    // console.log('this is the song you wanted: ' + song);
+    spotify
+        .search({ type: 'track', query: song })
+        .then(function(response) {
+            console.log(JSON.stringify(response, null, 2));
+        })
+        .catch(function(err) {
+            console.log(err);
+        })
 }
 
 //the Bands In Town API Function
@@ -38,6 +46,7 @@ function doRandomThis(a, b) {
     console.log("this is the modifier you entered: " + b);
 
 }
+
 //liri bot execution
 function liriRun(param1, param2) {
     // console.log(command + modifier);

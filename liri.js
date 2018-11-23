@@ -29,52 +29,27 @@ let modifier = argument.slice(3).join(" ");
 
 //the spotify API function
 function spotifyThis(song) {
-    // default value if nothing follows the spotify-this-song command
-    if (!song) {
-        spotify
-            .search({ type: 'track', query: "Ace of Base" })
-            .then(function (response) {
-                //grabs the first search result
-                let firstResponse = response.tracks.items[0]
-                //stores the name of the artist
-                let artist = firstResponse.artists[0].name;
-                console.log("Artist(s): " + artist);
-                //stores the full name of the song
-                let name = firstResponse.name;
-                console.log('Name of Song: ' + name);
-                //stores the external web link
-                let link = firstResponse.external_urls.spotify;
-                console.log('Spotify Link: ' + link);
-                //stores the album name
-                let albumName = firstResponse.album.name;
-                console.log('Album Name: ' + albumName);
-
-            })
-            .catch(function (err) {
-                console.log(err);
-            })
-    } else
-        spotify
-            .search({ type: 'track', query: song })
-            .then(function (response) {
-                //grabs the first search result
-                let firstResponse = response.tracks.items[0]
-                //stores the name of the artist
-                let artist = firstResponse.artists[0].name;
-                console.log("Artist(s): " + artist);
-                //stores the full name of the song
-                let name = firstResponse.name;
-                console.log('Name of Song: ' + name);
-                //stores the external web link
-                let link = firstResponse.external_urls.spotify;
-                console.log('Spotify Link: ' + link);
-                //stores the album name
-                let albumName = firstResponse.album.name;
-                console.log('Album Name: ' + albumName);
-            })
-            .catch(function (err) {
-                console.log(err);
-            })
+    spotify
+        .search({ type: 'track', query: song })
+        .then(function (response) {
+            //grabs the first search result
+            let firstResponse = response.tracks.items[0]
+            //stores the name of the artist
+            let artist = firstResponse.artists[0].name;
+            console.log("Artist(s): " + artist);
+            //stores the full name of the song
+            let name = firstResponse.name;
+            console.log('Name of Song: ' + name);
+            //stores the external web link
+            let link = firstResponse.external_urls.spotify;
+            console.log('Spotify Link: ' + link);
+            //stores the album name
+            let albumName = firstResponse.album.name;
+            console.log('Album Name: ' + albumName);
+        })
+        .catch(function (err) {
+            console.log(err);
+        })
 }
 
 //the Bands In Town API Function
@@ -193,9 +168,15 @@ function doRandomThis(a, b) {
 function liriRun(param1, param2) {
     // console.log(command + modifier);
     switch (param1) {
+
         //if spotify-this-song is process.argv[2]
         case 'spotify-this-song':
-            spotifyThis(param2);
+            //if nothing is entered after the command, defaut to this
+            if (!param2) {
+                spotifyThis("Ace of Base");
+            } else {
+                spotifyThis(param2);
+            }
             break;
 
         // if concert-this is process.argv[2]

@@ -92,7 +92,7 @@ function concertThis(artist) {
         .then(function (response) {
             //grabs the data and assigns it to allConcerts
             let allConcerts = response.data;
-            for (let i=0; i < allConcerts.length; i++) {
+            for (let i = 0; i < allConcerts.length; i++) {
                 //terminal separator
                 console.log("==========================================");
                 //response number
@@ -110,7 +110,7 @@ function concertThis(artist) {
                 //capture the date information
                 let concertDate = allConcerts[i].datetime;
                 //transforming concertDate to drop the time and keep the date in euro format
-                concertDate = concertDate.substring(0,10);
+                concertDate = concertDate.substring(0, 10);
                 //transforming concertDate further using moment.js
                 concertDate = moment(concertDate).format('MM/DD/YYYY');
                 //display the concertDate in the terminal

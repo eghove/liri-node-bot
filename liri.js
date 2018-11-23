@@ -13,11 +13,14 @@ let keys = require("./keys.js");
 //variable that lets us access the spotify key
 let spotify = new Spotify(keys.spotify);
 
-//take in the command
-let command = process.argv[2];
+//take in the entire command line
+let argument = process.argv;
 
-//take in the comman modifier
-let modifier = process.argv[3];
+//take in the command
+let command = argument[2];
+
+//take in the command modifier, everything position 3 and after
+let modifier = argument.slice(3).join(" ");
 
 //FUNCTIONS=====================================
 

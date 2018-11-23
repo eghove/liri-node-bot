@@ -130,7 +130,56 @@ function concertThis(artist) {
 
 //the OMDB API function
 function movieThis(movie) {
-    console.log('this is the movie you wanted: ' + movie);
+    //pulling in the omdb token
+    const token = keys.omdb.id;
+    //if there are any spaces in the modifier, it changes them to something the web can use.
+    let movieParam = movie.replace(" ", "%20");
+    //the OMDB base url
+    const baseURL = "http://www.omdbapi.com/?t="
+    //set up the query url
+    let queryURL = baseURL + movieParam + "&apikey=" + token;
+    axios.get(queryURL)
+        .then(function (response) {
+            //grabs the data and assigns it to movieData
+            let movieData = response.data;
+            //grab the movie title
+            let movieTitle = movieData.Title;
+            //grab the release year
+            let movieReleaseYear = movieData.Year;
+            //grab the IMDB rating
+            let movieIMDB = movieData.Ratings[0].Value;
+            //grab the rotten tomatoes rating
+            let movieRotten = movieData.Ratings[1].Value;
+            //grab the location where the movie was produced
+            let movieLocation = movieData.Country;
+            //grab the language of the move
+            let movieLang = movieData.Language;
+            // grab the plot of the movie
+            let moviePlot = movieData.Plot;
+            //grab the actors in the movie
+            let movieCast = movieData.Actors;
+
+
+            //terminal separator
+            console.log("==========================================");
+            //display all of the above to the terminal
+            console.log("Movie Tite: " + movieTitle);
+            console.log("Released: " + movieReleaseYear);
+            console.log("IMDB Rating: " + movieIMDB);
+            console.log("Rotten Tomatoes Rating: " + movieRotten);
+            console.log("Country of Production: " + movieLocation);
+            console.log("Language: " + movieLang);
+            console.log("Plot: " + moviePlot);
+            console.log("Actors: " + movieCast);
+            //terminal separator
+            console.log("==========================================");
+        }
+
+        )
+        .catch(function (err) {
+            console.log(err);
+        })
+
 }
 
 //the do-what-it-says function
@@ -156,7 +205,12 @@ function liriRun(param1, param2) {
 
         //if movie-this is process.argv[2]
         case 'movie-this':
-            movieThis(param2);
+            //if nothing is entered after the command, defaut to this
+            if (!param2) {
+                movieThis("Mr. Nobody");
+            } else {
+                movieThis(param2);
+            }
             break;
 
         //if do-what-it-says is process.argv[2]

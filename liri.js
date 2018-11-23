@@ -10,6 +10,9 @@ var Spotify = require("node-spotify-api");
 //loads the exported pieces from keys.js
 let keys = require("./keys.js");
 
+//require moment.js
+var moment = require("moment");
+
 //variable that lets us access the spotify key
 let spotify = new Spotify(keys.spotify);
 
@@ -87,9 +90,34 @@ function concertThis(artist) {
     //initiate the axios call
     axios.get(queryURL)
         .then(function (response) {
-            //grabs the first object in the matrix which is the soonest concert
-            let firstResponse = response.data[0];
-            console.log(JSON.stringify(firstResponse, null, 2));
+            //grabs the data and assigns it to allConcerts
+            let allConcerts = response.data;
+            for (let i=0; i < allConcerts.length; i++) {
+                //terminal separator
+                console.log("==========================================");
+                //response number
+                console.log(artist + " Concert #" + i + ":");
+                //capture the venue information
+                let concertVenue = allConcerts[i].venue.name;
+                //display the venue information
+                console.log("Venue: " + concertVenue);
+                //capture the venue location information
+                let venueCity = allConcerts[i].venue.city;
+                let venueRegion = allConcerts[i].venue.region;
+                let venueCountry = allConcerts[i].venue.country;
+                //display it all to the terminal
+                console.log("Location: " + venueCity + ", " + venueRegion + ", " + venueCountry);
+                //capture the date information
+                let concertDate = allConcerts[i].datetime;
+                //transforming concertDate to drop the time and keep the date in euro format
+                concertDate = concertDate.substring(0,10);
+                //transforming concertDate further using moment.js
+                concertDate = moment(concertDate).format('MM/DD/YYYY');
+                //display the concertDate in the terminal
+                console.log("Date: " + concertDate);
+                //terminal separator
+                console.log("==========================================");
+            }
         }
 
         )

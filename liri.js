@@ -71,7 +71,8 @@ function concertThis(artist) {
                 //terminal separator
                 console.log("==========================================");
                 //response number
-                console.log(artist + " Concert #" + i + ":");
+                let concertNumber = i+1;
+                console.log(artist + " Concert #" + concertNumber + ":");
                 //capture the venue information
                 let concertVenue = allConcerts[i].venue.name;
                 //display the venue information

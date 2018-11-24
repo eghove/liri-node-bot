@@ -189,7 +189,7 @@ function liriRun(param1, param2) {
     // console.log(command + modifier);
     switch (param1) {
 
-        //if spotify-this-song is process.argv[2]
+        //if spotify-this-song is command
         case 'spotify-this-song':
             //if nothing is entered after the command, defaut to this
             if (!param2) {
@@ -199,12 +199,12 @@ function liriRun(param1, param2) {
             }
             break;
 
-        // if concert-this is process.argv[2]
+        // if concert-this is command
         case 'concert-this':
             concertThis(param2);
             break;
 
-        //if movie-this is process.argv[2]
+        //if movie-this is command
         case 'movie-this':
             //if nothing is entered after the command, defaut to this
             if (!param2) {
@@ -214,14 +214,14 @@ function liriRun(param1, param2) {
             }
             break;
 
-        //if do-what-it-says is process.argv[2]
+        //if do-what-it-says is command
         case 'do-what-it-says':
             doRandomThis();
             break;
 
         //default case
         default:
-            console.log("don't be dumb");
+            console.log("Don't be dumb! Give me something I can work with!");
             break;
     }
 }

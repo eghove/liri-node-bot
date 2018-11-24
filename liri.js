@@ -159,9 +159,28 @@ function movieThis(movie) {
 }
 
 //the do-what-it-says function
-function doRandomThis(a, b) {
-    console.log("this is the command you entered: " + a);
-    console.log("this is the modifier you entered: " + b);
+function doRandomThis() {
+    //grab the fs node package
+    let fs = require("fs");
+    //reading the random.txt file
+    fs.readFile("random.txt", "utf8", function(error, data) {
+        //error handling
+        if (error) {
+            return console.log(error);
+        }
+        //turns the text in random.txt into an array
+        let dataArr = data.split(",");
+        //assigns the first item to the command variable
+        command = dataArr[0];
+        //assisgns the second item to the modifier variable
+        modifier = dataArr[1];
+        //executes the liriRun function
+        console.log(command);
+        console.log(modifier);
+        liriRun(command, modifier);
+    })
+
+    
 
 }
 
@@ -197,7 +216,7 @@ function liriRun(param1, param2) {
 
         //if do-what-it-says is process.argv[2]
         case 'do-what-it-says':
-            doRandomThis(param1, param2);
+            doRandomThis();
             break;
 
         //default case

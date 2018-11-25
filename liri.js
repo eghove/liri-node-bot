@@ -32,20 +32,20 @@ let modifier = argument.slice(3).join(" ");
 
 //function that appends the commands to log.txt
 function logCommands(param1, param2) {
-    fs.appendFile ("log.txt", "\n" + "\n" + "Command: " + param1 + "," + " Modifier: " + param2 + ";", function(err) {
+    fs.appendFile("log.txt", "\n" + "\n" + "Command: " + param1 + "," + " Modifier: " + param2 + ";", function (err) {
         if (err) {
-          return console.log(err);
+            return console.log(err);
         }
-      });
+    });
 }
 
 //function that appends the various outputs to log.txt
-function logOutput (output) {
-    fs.appendFile ("log.txt", "\n" + output, function(err) {
+function logOutput(output) {
+    fs.appendFile("log.txt", "\n" + output, function (err) {
         if (err) {
-          return console.log(err);
+            return console.log(err);
         }
-      });
+    });
 }
 
 //the spotify API function
@@ -97,31 +97,44 @@ function concertThis(artist) {
             //grabs the data and assigns it to allConcerts
             let allConcerts = response.data;
             for (let i = 0; i < allConcerts.length; i++) {
-                //terminal separator
-                console.log("==========================================");
-                //response number
-                let concertNumber = i+1;
-                console.log(artist + " Concert #" + concertNumber + ":");
-                //capture the venue information
+                //stores, displays, and logs the terminal separator
+                const separator = "==========================================";
+                logOutput(separator);
+                console.log(separator);
+
+                //stores, modifies, displays, and logs the concert number
+                let concertNumber = i + 1;
+                concertNumber = artist + " Concert #" + concertNumber + ":";
+                logOutput(concertNumber);
+                console.log(concertNumber);
+
+                //stores, modifies, displays, and logs the venue information
                 let concertVenue = allConcerts[i].venue.name;
-                //display the venue information
-                console.log("Venue: " + concertVenue);
-                //capture the venue location information
+                concertVenue = "Venue: " + concertVenue;
+                logOutput(concertVenue);
+                console.log(concertVenue);
+
+
+                //stores, modifies, displays, and logs the venue location information
                 let venueCity = allConcerts[i].venue.city;
                 let venueRegion = allConcerts[i].venue.region;
                 let venueCountry = allConcerts[i].venue.country;
-                //display it all to the terminal
-                console.log("Location: " + venueCity + ", " + venueRegion + ", " + venueCountry);
-                //capture the date information
+                let location = "Location: " + venueCity + ", " + venueRegion + ", " + venueCountry;
+                logOutput(location);
+                console.log(location);
+
+                //stores, modifies, displays, and logs the date information
                 let concertDate = allConcerts[i].datetime;
-                //transforming concertDate to drop the time and keep the date in euro format
-                concertDate = concertDate.substring(0, 10);
-                //transforming concertDate further using moment.js
-                concertDate = moment(concertDate).format('MM/DD/YYYY');
-                //display the concertDate in the terminal
-                console.log("Date: " + concertDate);
+                concertDate = concertDate.substring(0, 10); //transforming concertDate to drop the time and keep the date in euro format
+                concertDate = moment(concertDate).format('MM/DD/YYYY'); //transforming concertDate further using moment.js
+                concertDate = "Date: " + concertDate;
+                logOutput(concertDate);
+                console.log(concertDate);
+
                 //terminal separator
-                console.log("==========================================");
+                logOutput(separator);
+                console.log(separator);
+
             }
         }
 
@@ -189,9 +202,9 @@ function movieThis(movie) {
 
 //the do-what-it-says function
 function doRandomThis() {
-    
+
     //reading the random.txt file
-    fs.readFile("random.txt", "utf8", function(error, data) {
+    fs.readFile("random.txt", "utf8", function (error, data) {
         //error handling
         if (error) {
             return console.log(error);
@@ -208,7 +221,7 @@ function doRandomThis() {
         liriRun(command, modifier);
     })
 
-    
+
 
 }
 

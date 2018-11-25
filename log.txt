@@ -1,0 +1,21 @@
+
+
+Command: spotify-this-song, Modifier: niggas in paris;
+
+Name of Song: Niggas In Paris Metal version
+Spotify Link: https://open.spotify.com/track/79KTKi7aOajF1KUzcGbyLB
+Album Name: Pop Goes Hardcore - Volume 1
+Artist(s): Death Come Cover Me
+
+Command: spotify-this-song, Modifier: encore;
+
+Artist(s): DJ Snake
+Name of Song: Let Me Love You
+Spotify Link: https://open.spotify.com/track/0lYBSQXN6rCTvUZvg9S0lU
+Album Name: Encore
+
+Command: spotify-this-song, Modifier: skyrocket;
+Artist(s): Takuya Kuroda
+Spotify Link: https://open.spotify.com/track/6ojjeqszxwWaTAzXB3ZAbi
+Album Name: Edge
+Name of Song: Skyrocket

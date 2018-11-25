@@ -16,6 +16,9 @@ var moment = require("moment");
 //variable that lets us access the spotify key
 let spotify = new Spotify(keys.spotify);
 
+//grab the fs node package
+let fs = require("fs");
+
 //take in the entire command line
 let argument = process.argv;
 
@@ -27,6 +30,24 @@ let modifier = argument.slice(3).join(" ");
 
 //FUNCTIONS=====================================
 
+//function that appends the commands to log.txt
+function logCommands(param1, param2) {
+    fs.appendFile ("log.txt", "\n" + "\n" + "Command: " + param1 + "," + " Modifier: " + param2 + ";", function(err) {
+        if (err) {
+          return console.log(err);
+        }
+      });
+}
+
+//function that appends the various outputs to log.txt
+function logOutput (output) {
+    fs.appendFile ("log.txt", "\n" + output, function(err) {
+        if (err) {
+          return console.log(err);
+        }
+      });
+}
+
 //the spotify API function
 function spotifyThis(song) {
     spotify
@@ -34,18 +55,26 @@ function spotifyThis(song) {
         .then(function (response) {
             //grabs the first search result
             let firstResponse = response.tracks.items[0]
-            //stores the name of the artist
+            //stores, modifies, displays, and logs the name of the artist
             let artist = firstResponse.artists[0].name;
-            console.log("Artist(s): " + artist);
-            //stores the full name of the song
+            artist = "Artist(s): " + artist
+            console.log(artist);
+            logOutput(artist);
+            //stores, modifies, displays, and logs the full name of the song
             let name = firstResponse.name;
-            console.log('Name of Song: ' + name);
-            //stores the external web link
+            name = 'Name of Song: ' + name;
+            console.log(name);
+            logOutput(name);
+            //stores, modifies, displays, and logs the external web link
             let link = firstResponse.external_urls.spotify;
-            console.log('Spotify Link: ' + link);
-            //stores the album name
+            link = 'Spotify Link: ' + link;
+            console.log(link);
+            logOutput(link);
+            //stores, modifies, displays, and logs the album name
             let albumName = firstResponse.album.name;
-            console.log('Album Name: ' + albumName);
+            albumName = 'Album Name: ' + albumName;
+            console.log(albumName);
+            logOutput(albumName);
         })
         .catch(function (err) {
             console.log(err);
@@ -160,8 +189,7 @@ function movieThis(movie) {
 
 //the do-what-it-says function
 function doRandomThis() {
-    //grab the fs node package
-    let fs = require("fs");
+    
     //reading the random.txt file
     fs.readFile("random.txt", "utf8", function(error, data) {
         //error handling
@@ -186,7 +214,8 @@ function doRandomThis() {
 
 //liri bot execution
 function liriRun(param1, param2) {
-    // console.log(command + modifier);
+    //logs the commands
+    logCommands(param1, param2);
     switch (param1) {
 
         //if spotify-this-song is command

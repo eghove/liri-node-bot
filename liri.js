@@ -28,6 +28,9 @@ let command = argument[2];
 //take in the command modifier, everything position 3 and after
 let modifier = argument.slice(3).join(" ");
 
+//the console separator
+const separator = "==========================================";
+
 //FUNCTIONS=====================================
 
 //function that appends the commands to log.txt
@@ -98,7 +101,6 @@ function concertThis(artist) {
             let allConcerts = response.data;
             for (let i = 0; i < allConcerts.length; i++) {
                 //stores, displays, and logs the terminal separator
-                const separator = "==========================================";
                 logOutput(separator);
                 console.log(separator);
 
@@ -160,37 +162,73 @@ function movieThis(movie) {
         .then(function (response) {
             //grabs the data and assigns it to movieData
             let movieData = response.data;
+
             //grab the movie title
             let movieTitle = movieData.Title;
+            movieTitle = "Movie Tite: " + movieTitle;
+
             //grab the release year
             let movieReleaseYear = movieData.Year;
+            movieReleaseYear = "Released: " + movieReleaseYear;
+
             //grab the IMDB rating
             let movieIMDB = movieData.Ratings[0].Value;
+            movieIMDB = "IMDB Rating: " + movieIMDB;
+
             //grab the rotten tomatoes rating
             let movieRotten = movieData.Ratings[1].Value;
+            movieRotten = "Rotten Tomatoes Rating: " + movieRotten;
+
+
             //grab the location where the movie was produced
             let movieLocation = movieData.Country;
+            movieLocation = "Country of Production: " + movieLocation;
+
             //grab the language of the move
             let movieLang = movieData.Language;
+            movieLang = "Language: " + movieLang;
+
             // grab the plot of the movie
             let moviePlot = movieData.Plot;
+            moviePlot = "Plot: " + moviePlot;
+
             //grab the actors in the movie
             let movieCast = movieData.Actors;
+            movieCast = "Actors: " + movieCast;
 
 
             //terminal separator
-            console.log("==========================================");
-            //display all of the above to the terminal
-            console.log("Movie Tite: " + movieTitle);
-            console.log("Released: " + movieReleaseYear);
-            console.log("IMDB Rating: " + movieIMDB);
-            console.log("Rotten Tomatoes Rating: " + movieRotten);
-            console.log("Country of Production: " + movieLocation);
-            console.log("Language: " + movieLang);
-            console.log("Plot: " + moviePlot);
-            console.log("Actors: " + movieCast);
+            logOutput(separator);
+            console.log(separator);
+
+            //log all of this and display all of the this to the terminal
+            logOutput(movieTitle);
+            console.log(movieTitle);
+
+            logOutput(movieReleaseYear);
+            console.log(movieReleaseYear);
+
+            logOutput(movieIMDB);
+            console.log(movieIMDB);
+
+            logOutput(movieRotten);
+            console.log(movieRotten);
+
+            logOutput(movieLocation);
+            console.log(movieLocation);
+
+            logOutput(movieLang);
+            console.log(movieLang);
+
+            logOutput(moviePlot);
+            console.log(moviePlot);
+
+            logOutput(movieCast);
+            console.log(movieCast);
+
             //terminal separator
-            console.log("==========================================");
+            logOutput(separator);
+            console.log(separator);
         }
 
         )

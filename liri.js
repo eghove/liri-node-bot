@@ -29,7 +29,7 @@ let command = argument[2];
 let modifier = argument.slice(3).join(" ");
 
 //the console separator
-const separator = "==========================================";
+const separator = "\n==========================================";
 
 //FUNCTIONS=====================================
 
@@ -76,7 +76,7 @@ function spotifyThis(song) {
 
             //displays everything to the terminal
             console.log(artist + name + link + albumName);
-          
+
             //logs it all in the log.txt file
             fs.appendFile("log.txt", artist + name + link + albumName, function (err) {
                 if (err) {
@@ -106,41 +106,43 @@ function concertThis(artist) {
             let allConcerts = response.data;
             for (let i = 0; i < allConcerts.length; i++) {
 
-                //stores, modifies, displays, and logs the concert number
+                //stores, modifies, the concert number
                 let concertNumber = i + 1;
-                concertNumber = artist + " Concert #" + concertNumber + ":";
+                concertNumber = '\n' + artist.toUpperCase() + " Concert #" + concertNumber + ":";
 
-                //stores, modifies, displays, and logs the venue information
+                //stores, modifies, the venue information
                 let concertVenue = allConcerts[i].venue.name;
-                concertVenue = "Venue: " + concertVenue;
+                concertVenue = "\nVenue: " + concertVenue;
 
-                //stores, modifies, displays, and logs the venue location information
+                //stores, modifies, the venue location information
                 let venueCity = allConcerts[i].venue.city;
                 let venueRegion = allConcerts[i].venue.region;
                 let venueCountry = allConcerts[i].venue.country;
-                let location = "Location: " + venueCity + ", " + venueRegion + ", " + venueCountry;
+                let location;
 
-                //stores, modifies, displays, and logs the date information
+                //handles whether or not anything is in venueRegion, changes display appropriately
+                if (venueRegion.length > 0) {
+                    location = "\nLocation: " + venueCity + ", " + venueRegion + ", " + venueCountry;
+                } else { location = "\nLocation: " + venueCity + ", " + venueCountry; }
+
+
+                //stores, modifies, the date information
                 let concertDate = allConcerts[i].datetime;
                 concertDate = concertDate.substring(0, 10); //transforming concertDate to drop the time and keep the date in euro format
                 concertDate = moment(concertDate).format('MM/DD/YYYY'); //transforming concertDate further using moment.js
-                concertDate = "Date: " + concertDate;
-
-                //log everything to log.txt
-                logOutput(separator);
-                logOutput(concertNumber);
-                logOutput(concertVenue);
-                logOutput(location);
-                logOutput(concertDate);
-                logOutput(separator);
+                concertDate = "\nDate: " + concertDate;
 
                 //display everything in terminal
-                console.log(separator);
-                console.log(concertNumber);
-                console.log(concertVenue);
-                console.log(location);
-                console.log(concertDate);
-                console.log(separator);
+                console.log(separator + concertNumber + concertVenue + location + concertDate + separator);
+
+                //logs it all in the log.txt file
+                fs.appendFile("log.txt", separator + concertNumber + concertVenue + location + concertDate + separator, function (err) {
+                    if (err) {
+                        return console.log(err);
+                    }
+                });
+
+
             }
         }
 

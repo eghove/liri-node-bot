@@ -100,43 +100,42 @@ function concertThis(artist) {
             //grabs the data and assigns it to allConcerts
             let allConcerts = response.data;
             for (let i = 0; i < allConcerts.length; i++) {
-                //stores, displays, and logs the terminal separator
-                logOutput(separator);
-                console.log(separator);
-
+                
                 //stores, modifies, displays, and logs the concert number
                 let concertNumber = i + 1;
                 concertNumber = artist + " Concert #" + concertNumber + ":";
-                logOutput(concertNumber);
-                console.log(concertNumber);
-
+                
                 //stores, modifies, displays, and logs the venue information
                 let concertVenue = allConcerts[i].venue.name;
                 concertVenue = "Venue: " + concertVenue;
-                logOutput(concertVenue);
-                console.log(concertVenue);
-
-
+                
                 //stores, modifies, displays, and logs the venue location information
                 let venueCity = allConcerts[i].venue.city;
                 let venueRegion = allConcerts[i].venue.region;
                 let venueCountry = allConcerts[i].venue.country;
                 let location = "Location: " + venueCity + ", " + venueRegion + ", " + venueCountry;
-                logOutput(location);
-                console.log(location);
-
+    
                 //stores, modifies, displays, and logs the date information
                 let concertDate = allConcerts[i].datetime;
                 concertDate = concertDate.substring(0, 10); //transforming concertDate to drop the time and keep the date in euro format
                 concertDate = moment(concertDate).format('MM/DD/YYYY'); //transforming concertDate further using moment.js
                 concertDate = "Date: " + concertDate;
-                logOutput(concertDate);
-                console.log(concertDate);
 
-                //terminal separator
+                //log everything to log.txt
                 logOutput(separator);
-                console.log(separator);
+                logOutput(concertNumber);
+                logOutput(concertVenue);
+                logOutput(location);
+                logOutput(concertDate);
+                logOutput(separator);
 
+                //display everything in terminal
+                console.log(separator);
+                console.log(concertNumber);
+                console.log(concertVenue);
+                console.log(location);
+                console.log(concertDate);
+                console.log(separator);
             }
         }
 
@@ -197,37 +196,49 @@ function movieThis(movie) {
             movieCast = "Actors: " + movieCast;
 
 
-            //terminal separator
+            //log everything to log.txt
             logOutput(separator);
-            console.log(separator);
+            logOutput(movieTitle);
+            logOutput(movieReleaseYear);
+            logOutput(movieIMDB);
+            logOutput(movieRotten);
+            logOutput(movieLocation);
+            logOutput(movieLang);
+            logOutput(moviePlot);
+            logOutput(movieCast);
+            logOutput(separator);
+
 
             //log all of this and display all of the this to the terminal
-            logOutput(movieTitle);
+            console.log(separator);
+
+            
+            
             console.log(movieTitle);
 
-            logOutput(movieReleaseYear);
+            
             console.log(movieReleaseYear);
 
-            logOutput(movieIMDB);
+            
             console.log(movieIMDB);
 
-            logOutput(movieRotten);
+            
             console.log(movieRotten);
 
-            logOutput(movieLocation);
+            
             console.log(movieLocation);
 
-            logOutput(movieLang);
+            
             console.log(movieLang);
 
-            logOutput(moviePlot);
+            
             console.log(moviePlot);
 
-            logOutput(movieCast);
+            
             console.log(movieCast);
 
             //terminal separator
-            logOutput(separator);
+            
             console.log(separator);
         }
 

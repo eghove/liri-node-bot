@@ -1,9 +1,0 @@
-
-
-Command: concert-this, Modifier: nas;
-==========================================
-NAS Concert #1:
-Venue: Riverstage Brisbane
-Location: Brisbane, Australia
-Date: 02/10/2019
-==========================================

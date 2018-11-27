@@ -141,8 +141,6 @@ function concertThis(artist) {
                         return console.log(err);
                     }
                 });
-
-
             }
         }
 
@@ -150,8 +148,6 @@ function concertThis(artist) {
         .catch(function (err) {
             console.log(err);
         })
-
-
 }
 
 //the OMDB API function
@@ -171,82 +167,48 @@ function movieThis(movie) {
 
             //grab the movie title
             let movieTitle = movieData.Title;
-            movieTitle = "Movie Tite: " + movieTitle;
+            movieTitle = "\nMovie Tite: " + movieTitle;
 
             //grab the release year
             let movieReleaseYear = movieData.Year;
-            movieReleaseYear = "Released: " + movieReleaseYear;
+            movieReleaseYear = "\nReleased: " + movieReleaseYear;
 
             //grab the IMDB rating
             let movieIMDB = movieData.Ratings[0].Value;
-            movieIMDB = "IMDB Rating: " + movieIMDB;
+            movieIMDB = "\nIMDB Rating: " + movieIMDB;
 
             //grab the rotten tomatoes rating
             let movieRotten = movieData.Ratings[1].Value;
-            movieRotten = "Rotten Tomatoes Rating: " + movieRotten;
+            movieRotten = "\nRotten Tomatoes Rating: " + movieRotten;
 
 
             //grab the location where the movie was produced
             let movieLocation = movieData.Country;
-            movieLocation = "Country of Production: " + movieLocation;
+            movieLocation = "\nCountry of Production: " + movieLocation;
 
             //grab the language of the move
             let movieLang = movieData.Language;
-            movieLang = "Language: " + movieLang;
+            movieLang = "\nLanguage: " + movieLang;
 
             // grab the plot of the movie
             let moviePlot = movieData.Plot;
-            moviePlot = "Plot: " + moviePlot;
+            moviePlot = "\nPlot: " + moviePlot;
 
             //grab the actors in the movie
             let movieCast = movieData.Actors;
-            movieCast = "Actors: " + movieCast;
-
-
-            //log everything to log.txt
-            logOutput(separator);
-            logOutput(movieTitle);
-            logOutput(movieReleaseYear);
-            logOutput(movieIMDB);
-            logOutput(movieRotten);
-            logOutput(movieLocation);
-            logOutput(movieLang);
-            logOutput(moviePlot);
-            logOutput(movieCast);
-            logOutput(separator);
-
+            movieCast = "\nActors: " + movieCast;
 
             //log all of this and display all of the this to the terminal
-            console.log(separator);
+            console.log(separator + movieTitle + movieReleaseYear + movieIMDB + movieRotten + movieLocation + movieLang + moviePlot + movieCast + separator);
+
+            //logs it all in the log.txt file
+            fs.appendFile("log.txt", separator + movieTitle + movieReleaseYear + movieIMDB + movieRotten + movieLocation + movieLang + moviePlot + movieCast + separator, function (err) {
+                if (err) {
+                    return console.log(err);
+                }
+            });
 
 
-
-            console.log(movieTitle);
-
-
-            console.log(movieReleaseYear);
-
-
-            console.log(movieIMDB);
-
-
-            console.log(movieRotten);
-
-
-            console.log(movieLocation);
-
-
-            console.log(movieLang);
-
-
-            console.log(moviePlot);
-
-
-            console.log(movieCast);
-
-            //terminal separator
-
-            console.log(separator);
         }
 
         )

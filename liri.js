@@ -116,6 +116,8 @@ function concertThis(artist) {
         .then(function (response) {
             //grabs the data and assigns it to allConcerts
             let allConcerts = response.data;
+            //grabs the ticketing URL for the first show
+            let infoUrl = allConcerts[0].url;
             for (let i = 0; i < allConcerts.length; i++) {
 
                 //stores, modifies, the concert number
@@ -153,7 +155,20 @@ function concertThis(artist) {
                         return console.log(err);
                     }
                 });
+
+                
             }
+            //asks the user if they'd like to purchase a ticket to the first show in their browser
+            const prompt = new Confirm ({
+                name: 'buy ticket',
+                message: 'Would you like to open your browser to purchase a ticket to the first concert?'
+            })
+            prompt.ask(function(answer) {
+                if(answer) {
+                    //if answer is true, then open the spotify link
+                    opn(infoUrl);
+                } else return; 
+            })
         }
 
         )

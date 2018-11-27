@@ -198,15 +198,12 @@ function movieThis(movie) {
                     return console.log(err);
                 }
             });
-
-
         }
 
         )
         .catch(function (err) {
             console.log(err);
         })
-
 }
 
 //the do-what-it-says function
@@ -227,9 +224,6 @@ function doRandomThis() {
         //executes the liriRun function
         liriRun(command, modifier);
     })
-
-
-
 }
 
 //liri bot execution

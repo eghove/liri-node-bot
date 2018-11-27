@@ -50,8 +50,9 @@ function logCommands(param1, param2) {
 
 //the spotify API function
 function spotifyThis(song) {
+    let songQuery = song.toString();
     spotify
-        .search({ type: 'track', query: song })
+        .search({ type: 'track', query: songQuery })
         .then(function (response) {
             //grabs the first search result
             let firstResponse = response.tracks.items[0]

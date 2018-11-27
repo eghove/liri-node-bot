@@ -43,13 +43,13 @@ function logCommands(param1, param2) {
 }
 
 //function that appends the various outputs to log.txt
-function logOutput(output) {
-    fs.appendFile("log.txt", "\n" + output, function (err) {
-        if (err) {
-            return console.log(err);
-        }
-    });
-}
+// function logOutput(output) {
+//     fs.appendFile("log.txt", "\n" + output, function (err) {
+//         if (err) {
+//             return console.log(err);
+//         }
+//     });
+// }
 
 //the spotify API function
 function spotifyThis(song) {
@@ -60,24 +60,29 @@ function spotifyThis(song) {
             let firstResponse = response.tracks.items[0]
             //stores, modifies, displays, and logs the name of the artist
             let artist = firstResponse.artists[0].name;
-            artist = "Artist(s): " + artist
-            console.log(artist);
-            logOutput(artist);
-            //stores, modifies, displays, and logs the full name of the song
+            artist = "\nArtist(s): " + artist
+
+            //stores, modifies, the full name of the song
             let name = firstResponse.name;
-            name = 'Name of Song: ' + name;
-            console.log(name);
-            logOutput(name);
-            //stores, modifies, displays, and logs the external web link
+            name = '\nName of Song: ' + name;
+
+            //stores, modifies, the external web link
             let link = firstResponse.external_urls.spotify;
-            link = 'Spotify Link: ' + link;
-            console.log(link);
-            logOutput(link);
-            //stores, modifies, displays, and logs the album name
+            link = '\nSpotify Link: ' + link;
+
+            //stores, modifies, the album name
             let albumName = firstResponse.album.name;
-            albumName = 'Album Name: ' + albumName;
-            console.log(albumName);
-            logOutput(albumName);
+            albumName = '\nAlbum Name: ' + albumName;
+
+            //displays everything to the terminal
+            console.log(artist + name + link + albumName);
+          
+            //logs it all in the log.txt file
+            fs.appendFile("log.txt", artist + name + link + albumName, function (err) {
+                if (err) {
+                    return console.log(err);
+                }
+            });
         })
         .catch(function (err) {
             console.log(err);
@@ -100,21 +105,21 @@ function concertThis(artist) {
             //grabs the data and assigns it to allConcerts
             let allConcerts = response.data;
             for (let i = 0; i < allConcerts.length; i++) {
-                
+
                 //stores, modifies, displays, and logs the concert number
                 let concertNumber = i + 1;
                 concertNumber = artist + " Concert #" + concertNumber + ":";
-                
+
                 //stores, modifies, displays, and logs the venue information
                 let concertVenue = allConcerts[i].venue.name;
                 concertVenue = "Venue: " + concertVenue;
-                
+
                 //stores, modifies, displays, and logs the venue location information
                 let venueCity = allConcerts[i].venue.city;
                 let venueRegion = allConcerts[i].venue.region;
                 let venueCountry = allConcerts[i].venue.country;
                 let location = "Location: " + venueCity + ", " + venueRegion + ", " + venueCountry;
-    
+
                 //stores, modifies, displays, and logs the date information
                 let concertDate = allConcerts[i].datetime;
                 concertDate = concertDate.substring(0, 10); //transforming concertDate to drop the time and keep the date in euro format
@@ -212,33 +217,33 @@ function movieThis(movie) {
             //log all of this and display all of the this to the terminal
             console.log(separator);
 
-            
-            
+
+
             console.log(movieTitle);
 
-            
+
             console.log(movieReleaseYear);
 
-            
+
             console.log(movieIMDB);
 
-            
+
             console.log(movieRotten);
 
-            
+
             console.log(movieLocation);
 
-            
+
             console.log(movieLang);
 
-            
+
             console.log(moviePlot);
 
-            
+
             console.log(movieCast);
 
             //terminal separator
-            
+
             console.log(separator);
         }
 

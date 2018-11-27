@@ -19,6 +19,12 @@ let spotify = new Spotify(keys.spotify);
 //grab the fs node package
 let fs = require("fs");
 
+//pulling in the opn launcher module
+const opn = require('opn');
+
+//pulling in the prompt-confirm module
+const Confirm = require('prompt-confirm');
+
 //take in the entire command line
 let argument = process.argv;
 
@@ -59,21 +65,35 @@ function spotifyThis(song) {
 
             //stores, modifies, the external web link
             let link = firstResponse.external_urls.spotify;
-            link = '\nSpotify Link: ' + link;
+            let displayLink = '\nSpotify Link: ' + link;
 
             //stores, modifies, the album name
             let albumName = firstResponse.album.name;
             albumName = '\nAlbum Name: ' + albumName;
 
             //displays everything to the terminal
-            console.log(artist + name + link + albumName);
+            console.log(artist + name + displayLink + albumName + "\n");
 
             //logs it all in the log.txt file
-            fs.appendFile("log.txt", artist + name + link + albumName, function (err) {
+            fs.appendFile("log.txt", artist + name + displayLink + albumName, function (err) {
                 if (err) {
                     return console.log(err);
                 }
             });
+
+            //asks the user if they'd like to play this song in their browser
+            const prompt = new Confirm ({
+                name: 'playSong',
+                message: 'Would you like to play this song in your browser?'
+            })
+            prompt.ask(function(answer) {
+                if(answer) {
+                    //if answer is true, then open the spotify link
+                    opn(link);
+                } else return; 
+            })
+            // 
+        
         })
         .catch(function (err) {
             console.log(err);

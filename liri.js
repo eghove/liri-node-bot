@@ -42,15 +42,6 @@ function logCommands(param1, param2) {
     });
 }
 
-//function that appends the various outputs to log.txt
-// function logOutput(output) {
-//     fs.appendFile("log.txt", "\n" + output, function (err) {
-//         if (err) {
-//             return console.log(err);
-//         }
-//     });
-// }
-
 //the spotify API function
 function spotifyThis(song) {
     spotify

@@ -225,8 +225,6 @@ function doRandomThis() {
         //assisgns the second item to the modifier variable
         modifier = dataArr[1];
         //executes the liriRun function
-        console.log(command);
-        console.log(modifier);
         liriRun(command, modifier);
     })
 

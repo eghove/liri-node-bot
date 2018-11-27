@@ -11,3 +11,31 @@ Language: English, French
 Plot: A hapless New York City advertising executive is mistaken for a government agent by a group of foreign spies, and is pursued across the country while he looks for a way to survive.
 Actors: Cary Grant, Eva Marie Saint, James Mason, Jessie Royce Landis
 ==========================================
+
+Command: do-what-it-says, Modifier: ;
+
+Command: movie-this, Modifier: vertigo;
+==========================================
+Movie Tite: Vertigo
+Released: 1958
+IMDB Rating: 8.3/10
+Rotten Tomatoes Rating: 96%
+Country of Production: USA
+Language: English
+Plot: A former police detective juggles wrestling with his personal demons and becoming obsessed with a hauntingly beautiful woman.
+Actors: James Stewart, Kim Novak, Barbara Bel Geddes, Tom Helmore
+==========================================
+
+Command: do-what-it-says, Modifier: ;
+
+Command: movie-this, Modifier: vertigo;
+==========================================
+Movie Tite: Vertigo
+Released: 1958
+IMDB Rating: 8.3/10
+Rotten Tomatoes Rating: 96%
+Country of Production: USA
+Language: English
+Plot: A former police detective juggles wrestling with his personal demons and becoming obsessed with a hauntingly beautiful woman.
+Actors: James Stewart, Kim Novak, Barbara Bel Geddes, Tom Helmore
+==========================================

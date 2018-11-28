@@ -207,64 +207,80 @@ function movieThis(movie) {
             //grabs the data and assigns it to movieData
             let movieData = response.data;
 
-            //grab the movie title
-            let movieTitle = movieData.Title;
-            movieTitle = "\nMovie Tite: " + movieTitle;
+            //checks to make sure movieData has results. If so, does this:
+            if (movieData.Title) {
 
-            //grab the release year
-            let movieReleaseYear = movieData.Year;
-            movieReleaseYear = "\nReleased: " + movieReleaseYear;
+                //grab the movie title
+                let movieTitle = movieData.Title;
+                movieTitle = "\nMovie Tite: " + movieTitle;
 
-            //grab the IMDB rating
-            let movieIMDB = movieData.Ratings[0].Value;
-            movieIMDB = "\nIMDB Rating: " + movieIMDB;
+                //grab the release year
+                let movieReleaseYear = movieData.Year;
+                movieReleaseYear = "\nReleased: " + movieReleaseYear;
 
-            //grab the rotten tomatoes rating
-            let movieRotten = movieData.Ratings[1].Value;
-            movieRotten = "\nRotten Tomatoes Rating: " + movieRotten;
+                //grab the IMDB rating
+                let movieIMDB = movieData.Ratings[0].Value;
+                movieIMDB = "\nIMDB Rating: " + movieIMDB;
+
+                //grab the rotten tomatoes rating
+                let movieRotten = movieData.Ratings[1].Value;
+                movieRotten = "\nRotten Tomatoes Rating: " + movieRotten;
 
 
-            //grab the location where the movie was produced
-            let movieLocation = movieData.Country;
-            movieLocation = "\nCountry of Production: " + movieLocation;
+                //grab the location where the movie was produced
+                let movieLocation = movieData.Country;
+                movieLocation = "\nCountry of Production: " + movieLocation;
 
-            //grab the language of the move
-            let movieLang = movieData.Language;
-            movieLang = "\nLanguage: " + movieLang;
+                //grab the language of the move
+                let movieLang = movieData.Language;
+                movieLang = "\nLanguage: " + movieLang;
 
-            // grab the plot of the movie
-            let moviePlot = movieData.Plot;
-            moviePlot = "\nPlot: " + moviePlot;
+                // grab the plot of the movie
+                let moviePlot = movieData.Plot;
+                moviePlot = "\nPlot: " + moviePlot;
 
-            //grab the actors in the movie
-            let movieCast = movieData.Actors;
-            movieCast = "\nActors: " + movieCast;
+                //grab the actors in the movie
+                let movieCast = movieData.Actors;
+                movieCast = "\nActors: " + movieCast;
 
-            //grab the poster link
-            let moviePoster = movieData.Poster;
+                //grab the poster link
+                let moviePoster = movieData.Poster;
 
-            //log all of this and display all of the this to the terminal
-            console.log(separator + movieTitle + movieReleaseYear + movieIMDB + movieRotten + movieLocation + movieLang + moviePlot + movieCast + separator);
-            
+                //log all of this and display all of the this to the terminal
+                console.log(separator + movieTitle + movieReleaseYear + movieIMDB + movieRotten + movieLocation + movieLang + moviePlot + movieCast + separator);
 
-            //logs it all in the log.txt file
-            fs.appendFile("log.txt", separator + movieTitle + movieReleaseYear + movieIMDB + movieRotten + movieLocation + movieLang + moviePlot + movieCast + separator, function (err) {
-                if (err) {
-                    return console.log(err);
-                }
-            });
 
-            //asks the user if they'd like to view the poster in their browser
-            const prompt = new Confirm({
-                name: 'poster',
-                message: 'Would you like to open your browser to view the movie poster?'
-            })
-            prompt.ask(function (answer) {
-                if (answer) {
-                    //if answer is true, then open the movie poster link
-                    opn(moviePoster);
-                } else return;
-            })
+                //logs it all in the log.txt file
+                fs.appendFile("log.txt", separator + movieTitle + movieReleaseYear + movieIMDB + movieRotten + movieLocation + movieLang + moviePlot + movieCast + separator, function (err) {
+                    if (err) {
+                        return console.log(err);
+                    }
+                });
+
+                console.log('length: ' + movieData.length);
+
+                //asks the user if they'd like to view the poster in their browser
+                const prompt = new Confirm({
+                    name: 'poster',
+                    message: 'Would you like to open your browser to view the movie poster?'
+                })
+                prompt.ask(function (answer) {
+                    if (answer) {
+                        //if answer is true, then open the movie poster link
+                        opn(moviePoster);
+                    } else return;
+                })
+            } else { 
+                console.log("\nNo movie by that title found.");
+
+                //logs it all in the log.txt file
+                fs.appendFile("log.txt", "\nNo movie by that title found.", function (err) {
+                    if (err) {
+                        return console.log(err);
+                    }
+                });
+
+            };
         }
 
         )

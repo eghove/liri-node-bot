@@ -83,18 +83,18 @@ function spotifyThis(song) {
             });
 
             //asks the user if they'd like to play this song in their browser
-            const prompt = new Confirm ({
+            const prompt = new Confirm({
                 name: 'playSong',
                 message: 'Would you like to play this song in your browser?'
             })
-            prompt.ask(function(answer) {
-                if(answer) {
+            prompt.ask(function (answer) {
+                if (answer) {
                     //if answer is true, then open the spotify link
                     opn(link);
-                } else return; 
+                } else return;
             })
             // 
-        
+
         })
         .catch(function (err) {
             console.log(err);
@@ -116,65 +116,81 @@ function concertThis(artist) {
         .then(function (response) {
             //grabs the data and assigns it to allConcerts
             let allConcerts = response.data;
-            //grabs the ticketing URL for the first show
-            let infoUrl = allConcerts[0].url;
-            for (let i = 0; i < allConcerts.length; i++) {
 
-                //stores, modifies, the concert number
-                let concertNumber = i + 1;
-                concertNumber = '\n' + artist.toUpperCase() + " Concert #" + concertNumber + ":";
+            //checks to make sure there are actually results. If so, does the below
+            if (allConcerts.length > 0) {
+                //grabs the ticketing URL for the first show
+                let infoUrl = allConcerts[0].url;
+                for (let i = 0; i < allConcerts.length; i++) {
 
-                //stores, modifies, the venue information
-                let concertVenue = allConcerts[i].venue.name;
-                concertVenue = "\nVenue: " + concertVenue;
+                    //stores, modifies, the concert number
+                    let concertNumber = i + 1;
+                    concertNumber = '\n' + artist.toUpperCase() + " Concert #" + concertNumber + ":";
 
-                //stores, modifies, the venue location information
-                let venueCity = allConcerts[i].venue.city;
-                let venueRegion = allConcerts[i].venue.region;
-                let venueCountry = allConcerts[i].venue.country;
-                let location;
+                    //stores, modifies, the venue information
+                    let concertVenue = allConcerts[i].venue.name;
+                    concertVenue = "\nVenue: " + concertVenue;
 
-                //handles whether or not anything is in venueRegion, changes display appropriately
-                if (venueRegion.length > 0) {
-                    location = "\nLocation: " + venueCity + ", " + venueRegion + ", " + venueCountry;
-                } else { location = "\nLocation: " + venueCity + ", " + venueCountry; }
+                    //stores, modifies, the venue location information
+                    let venueCity = allConcerts[i].venue.city;
+                    let venueRegion = allConcerts[i].venue.region;
+                    let venueCountry = allConcerts[i].venue.country;
+                    let location;
+
+                    //handles whether or not anything is in venueRegion, changes display appropriately
+                    if (venueRegion.length > 0) {
+                        location = "\nLocation: " + venueCity + ", " + venueRegion + ", " + venueCountry;
+                    } else { location = "\nLocation: " + venueCity + ", " + venueCountry; }
 
 
-                //stores, modifies, the date information
-                let concertDate = allConcerts[i].datetime;
-                concertDate = concertDate.substring(0, 10); //transforming concertDate to drop the time and keep the date in euro format
-                concertDate = moment(concertDate).format('MM/DD/YYYY'); //transforming concertDate further using moment.js
-                concertDate = "\nDate: " + concertDate;
+                    //stores, modifies, the date information
+                    let concertDate = allConcerts[i].datetime;
+                    concertDate = concertDate.substring(0, 10); //transforming concertDate to drop the time and keep the date in euro format
+                    concertDate = moment(concertDate).format('MM/DD/YYYY'); //transforming concertDate further using moment.js
+                    concertDate = "\nDate: " + concertDate;
 
-                //display everything in terminal
-                console.log(separator + concertNumber + concertVenue + location + concertDate + separator);
+                    //display everything in terminal
+                    console.log(separator + concertNumber + concertVenue + location + concertDate + separator);
+
+                    //logs it all in the log.txt file
+                    fs.appendFile("log.txt", separator + concertNumber + concertVenue + location + concertDate + separator, function (err) {
+                        if (err) {
+                            return console.log(err);
+                        }
+                    });
+
+
+                }
+                //asks the user if they'd like to purchase a ticket to the first show in their browser
+                const prompt = new Confirm({
+                    name: 'buy ticket',
+                    message: 'Would you like to open your browser to purchase a ticket to the first concert?'
+                })
+                prompt.ask(function (answer) {
+                    if (answer) {
+                        //if answer is true, then open the spotify link
+                        opn(infoUrl);
+                    } else return;
+                })
+                //if no concerts found, does this!
+            } else {
+                console.log('No concerts found');
 
                 //logs it all in the log.txt file
-                fs.appendFile("log.txt", separator + concertNumber + concertVenue + location + concertDate + separator, function (err) {
+                fs.appendFile("log.txt", "No concerts found", function (err) {
                     if (err) {
                         return console.log(err);
                     }
                 });
 
-                
             }
-            //asks the user if they'd like to purchase a ticket to the first show in their browser
-            const prompt = new Confirm ({
-                name: 'buy ticket',
-                message: 'Would you like to open your browser to purchase a ticket to the first concert?'
-            })
-            prompt.ask(function(answer) {
-                if(answer) {
-                    //if answer is true, then open the spotify link
-                    opn(infoUrl);
-                } else return; 
-            })
         }
 
         )
         .catch(function (err) {
             console.log(err);
         })
+
 }
 
 //the OMDB API function

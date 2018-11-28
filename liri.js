@@ -172,17 +172,16 @@ function concertThis(artist) {
                         opn(infoUrl);
                     } else return;
                 })
-                //if no concerts found, does this!
+                //if no concerts found, does this:
             } else {
                 console.log('No concerts found');
 
                 //logs it all in the log.txt file
-                fs.appendFile("log.txt", "No concerts found", function (err) {
+                fs.appendFile("log.txt", "\nNo concerts found", function (err) {
                     if (err) {
                         return console.log(err);
                     }
                 });
-
             }
         }
 

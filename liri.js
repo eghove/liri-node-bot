@@ -257,7 +257,6 @@ function movieThis(movie) {
                     }
                 });
 
-                console.log('length: ' + movieData.length);
 
                 //asks the user if they'd like to view the poster in their browser
                 const prompt = new Confirm({

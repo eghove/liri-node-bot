@@ -240,8 +240,12 @@ function movieThis(movie) {
             let movieCast = movieData.Actors;
             movieCast = "\nActors: " + movieCast;
 
+            //grab the poster link
+            let moviePoster = movieData.Poster;
+
             //log all of this and display all of the this to the terminal
             console.log(separator + movieTitle + movieReleaseYear + movieIMDB + movieRotten + movieLocation + movieLang + moviePlot + movieCast + separator);
+            
 
             //logs it all in the log.txt file
             fs.appendFile("log.txt", separator + movieTitle + movieReleaseYear + movieIMDB + movieRotten + movieLocation + movieLang + moviePlot + movieCast + separator, function (err) {
@@ -249,6 +253,18 @@ function movieThis(movie) {
                     return console.log(err);
                 }
             });
+
+            //asks the user if they'd like to view the poster in their browser
+            const prompt = new Confirm({
+                name: 'poster',
+                message: 'Would you like to open your browser to view the movie poster?'
+            })
+            prompt.ask(function (answer) {
+                if (answer) {
+                    //if answer is true, then open the movie poster link
+                    opn(moviePoster);
+                } else return;
+            })
         }
 
         )

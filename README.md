@@ -12,6 +12,11 @@ LIRI Bot is an assistant that can be accessed via the command line of a user's t
 * Log all commands, queries, and results in a text file called log.txt, and
 * Execute a pre-programmed search command located in a text file called random.txt.
 
+## How do I Start Using LIRI Bot?
+If you'd like to use LIRI Bot, please kindly follow the steps outlined below:
+1. Ensure that you have Node.js installed on your local machine. 
+1. Clone the LIRI Bot repository into your local machine
+
 
 ## What Node Modules does LIRI Bot Use?
 LIRI Bot uses the following Node.js modules (and their embedded dependencies):

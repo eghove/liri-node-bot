@@ -14,9 +14,19 @@ LIRI Bot is an assistant that can be accessed via the command line of a user's t
 
 ## How do I Start Using LIRI Bot?
 If you'd like to use LIRI Bot, please kindly follow the steps outlined below:
-1. Ensure that you have Node.js installed on your local machine. 
-1. Clone the LIRI Bot repository into your local machine
-
+1. Ensure that you have Node.js installed on your local machine. If you need to install Node.js, please go here: https://nodejs.org/ .
+1. Clone the LIRI Bot repository into a folder on your local machine. If you need more information about cloning GitHub repositories, please go here: https://help.github.com/articles/cloning-a-repository/ .
+1. Once you've cloned the LIRI Bot repository into a folder on your local machine, please check to make sure you have the following files:
+    1. keys.js
+    1. liri.js
+    1. random.txt
+    1. package.json
+    1. package-lock.json (?)
+1. In order to use all of LIRI Bot's functionality, you will need to obtain API keys to the APIs listed below. Don't worry; they're free, but may take some time to respond to your request for an API.
+    1. Spotify: https://developer.spotify.com/documentation/web-api/
+    1. Bands in Town: https://manager.bandsintown.com/support/bandsintown-api
+    1. Open Movie Database: http://www.omdbapi.com/
+1. 
 
 ## What Node Modules does LIRI Bot Use?
 LIRI Bot uses the following Node.js modules (and their embedded dependencies):

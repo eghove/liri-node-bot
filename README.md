@@ -7,7 +7,7 @@ LIRI Bot is an assistant that can be accessed via the command line of a user's t
 * Play the song found on Spotify in a new browser window,
 * Search Bands in Town for upcoming performances by a band or artist and display those results,
 * Take the user to the site in a new browser window where they may purchase tickets to the first upcoming performance,
-* Search the Open Movie Database for a movie title and display those results,
+* Search the Open Movie Database (OMDb) for a movie title and display those results,
 * Display the movie poster for the movie found in a new browser window,
 * Log all commands, queries, and results in a text file called log.txt, and
 * Execute a pre-programmed search command located in a text file called random.txt.
@@ -39,6 +39,14 @@ If you'd like to use LIRI Bot, please kindly follow the steps outlined below:
         OMDB_ID=YOUR_OPEN_MOVIE_DATABASE_KEY
 
 1. You're all set to make LIRI Bot do your bidding!
+
+## How do I Make LIRI Bot Obey Me?
+Once LIRI Bot is set up, use your terminal navigate to the local folder containing the files that make up LIRI Bot. All commands to LIRI Bot must be issued in the terminal and begin with `node liri.js`. A full list of commands is below (without the <> signs):
+* To search Spotify for a song: `node liri.js spotify-this-song <song title>`
+* To search Bands In Town for upcoming performances by a band or artist: `node liri.js concert-this <band or artist>`
+* To search OMDb for a movie by title: `node liri.js movie-this <movie title>`
+* To execute the pre-programmed command in `random.txt` : `node liri.js do-what-it-says`
+
 
 ## What Node Modules does LIRI Bot Use?
 LIRI Bot uses the following Node.js modules (and their embedded dependencies):

@@ -31,12 +31,14 @@ If you'd like to use LIRI Bot, please kindly follow the steps outlined below:
 1. Open your `.env` file in your favorite text editor (like Visual Studio Code) and replace the values below with your API key and token information. Make it look like the code below.
         
        
-        SPOTIFY_ID=YOUR SPOTIFY ID
-        SPOTIFY_SECRET=YOUR SPOTIFY API KEY/TOKEN
+        SPOTIFY_ID=YOUR_SPOTIFY_ID
+        SPOTIFY_SECRET=YOUR_SPOTIFY_API_KEY
 
-        BANDSIT_ID=YOUR BANDS IN TOWN KEY
+        BANDSIT_ID=YOUR_BANDS_IN_TOWN_KEY
 
-        OMDB_ID=YOUR OPEN MOVIE DATABASE KEY
+        OMDB_ID=YOUR_OPEN_MOVIE_DATABASE_KEY
+
+1. You're all set to make LIRI Bot do your bidding!
 
 ## What Node Modules does LIRI Bot Use?
 LIRI Bot uses the following Node.js modules (and their embedded dependencies):

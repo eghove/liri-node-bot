@@ -44,7 +44,7 @@ If you'd like to use LIRI Bot, please kindly follow the steps outlined below:
 Once LIRI Bot is set up, use your terminal navigate to the local folder containing the files that make up LIRI Bot. All commands to LIRI Bot must be issued in the terminal and begin with `node liri.js`. A full list of commands is below (without the <> signs):
 * To search Spotify for a song: `node liri.js spotify-this-song <song title>`
 * To search Bands In Town for upcoming performances by a band or artist: `node liri.js concert-this <band or artist>`
-![concert-this demo](assets/concert-this.gif)
+![concert-this demo](assets/concert-this.webm)
 * To search OMDb for a movie by title: `node liri.js movie-this <movie title>`
 * To execute the pre-programmed command in `random.txt` : `node liri.js do-what-it-says`
 

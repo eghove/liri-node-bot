@@ -26,7 +26,9 @@ If you'd like to use LIRI Bot, please kindly follow the steps outlined below:
     1. Spotify: https://developer.spotify.com/documentation/web-api/
     1. Bands in Town: https://manager.bandsintown.com/support/bandsintown-api
     1. Open Movie Database: http://www.omdbapi.com/
-1. 
+1. Use the terminal to navigate to the folder containing your local copy of LIRI Bot. Once you're there, type the following command in your terminal: `npm install`. This will install all of the Node modules necessary to make LIRI Bot work.
+1. In the same local folder as LIRI Bot's other files, create a file called `.env`. This is where you'll store your API keys for use by the `keys.js` file.
+1. Open your `.env` file in your favorite text editor (like Visual Studio Code) and replace the values below with your API key and token information.
 
 ## What Node Modules does LIRI Bot Use?
 LIRI Bot uses the following Node.js modules (and their embedded dependencies):

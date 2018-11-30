@@ -59,7 +59,7 @@ Once LIRI Bot is set up, use your terminal navigate to the local folder containi
 [![Do What It Says Demo](http://img.youtube.com/vi/wfqIPY-6BNo/0.jpg)](http://www.youtube.com/watch?v=wfqIPY-6BNo) 
 
 ## How Do I Change The `do-what-it-says` Command?
-If you'd like to change the action executed by the `do-what-it-says-command`, please open your local version of `random.txt` in a text editor (like Visual Studio Code). Change the first phrase (before the comma) to one of the commands above and the second phrase to the item for which you wish to search.
+If you'd like to change the action executed by the `do-what-it-says-command`, please open your local version of `random.txt` in a text editor (like Visual Studio Code). Change the first phrase (before the comma) to one of the commands above and the second phrase to the item for which you wish to search. Save your changes.
 
 ## What Node Modules does LIRI Bot Use?
 LIRI Bot uses the following Node.js modules (and their embedded dependencies):
@@ -70,5 +70,12 @@ LIRI Bot uses the following Node.js modules (and their embedded dependencies):
 * opn, and
 * prompt-confirm.
 
+## What's Next for LIRI Bot?
+Below are some functionalities I'm hoping to add to LIRI Bot in the future:
+* Weather forecast
+* Additional prompts
+* Restaurant recommendations
 
+## How Can I Help with LIRI Bot?
+If you're interested in helping out with LIRI Bot, or if you have ideas for additional functionality, please feel free to contact me through https://eghove.github.io/
 

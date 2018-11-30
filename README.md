@@ -58,6 +58,9 @@ Once LIRI Bot is set up, use your terminal navigate to the local folder containi
 
 [![Do What It Says Demo](http://img.youtube.com/vi/wfqIPY-6BNo/0.jpg)](http://www.youtube.com/watch?v=wfqIPY-6BNo) 
 
+## How Do I Change The `do-what-it-says` Command?
+If you'd like to change the action executed by the `do-what-it-says-command`, please open your local version of `random.txt` in a text editor (like Visual Studio Code). Change the first phrase (before the comma) to one of the commands above and the second phrase to the item for which you wish to search.
+
 ## What Node Modules does LIRI Bot Use?
 LIRI Bot uses the following Node.js modules (and their embedded dependencies):
 * axios,

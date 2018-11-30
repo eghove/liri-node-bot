@@ -44,14 +44,19 @@ If you'd like to use LIRI Bot, please kindly follow the steps outlined below:
 Once LIRI Bot is set up, use your terminal navigate to the local folder containing the files that make up LIRI Bot. All commands to LIRI Bot must be issued in the terminal and begin with `node liri.js`. A full list of commands is below (without the <> signs):
 * To search Spotify for a song: `node liri.js spotify-this-song <song title>`
 
-[![Spotify this Song Demo](http://img.youtube.com/vi/qt_4rCQwbmE/0.jpg)](http://www.youtube.com/watch?v=qt_4rCQwbmEQ) https://youtu.be/
+[![Spotify this Song Demo](http://img.youtube.com/vi/qt_4rCQwbmE/0.jpg)](http://www.youtube.com/watch?v=qt_4rCQwbmEQ) 
 
 * To search Bands In Town for upcoming performances by a band or artist: `node liri.js concert-this <band or artist>`
 
 [![Concert This Demo](http://img.youtube.com/vi/28GwKh46bWQ/0.jpg)](http://www.youtube.com/watch?v=28GwKh46bWQ) 
+
 * To search OMDb for a movie by title: `node liri.js movie-this <movie title>`
+
+[![Movie This Demo](http://img.youtube.com/vi/Q2r-RtctsmQ/0.jpg)](http://www.youtube.com/watch?v=Q2r-RtctsmQ) 
+
 * To execute the pre-programmed command in `random.txt` : `node liri.js do-what-it-says`
 
+[![Do What It Says Demo](http://img.youtube.com/vi/wfqIPY-6BNo/0.jpg)](http://www.youtube.com/watch?v=wfqIPY-6BNo) 
 
 ## What Node Modules does LIRI Bot Use?
 LIRI Bot uses the following Node.js modules (and their embedded dependencies):

@@ -41,7 +41,7 @@ If you'd like to use LIRI Bot, please kindly follow the steps outlined below:
 1. You're all set to make LIRI Bot do your bidding!
 
 ## How do I Make LIRI Bot Obey Me?
-Once LIRI Bot is set up, use your terminal navigate to the local folder containing the files that make up LIRI Bot. All commands to LIRI Bot must be issued in the terminal and begin with `node liri.js`. A full list of commands is below (without the <> signs):
+Once LIRI Bot is set up, use your terminal navigate to the local folder containing the files that make up LIRI Bot. All commands to LIRI Bot must be issued in the terminal and begin with `node liri.js`. A full list of commands (without the <> signs) with YouTube demo screens may be found below.
 * To search Spotify for a song: `node liri.js spotify-this-song <song title>`
 
 [![Spotify this Song Demo](http://img.youtube.com/vi/qt_4rCQwbmE/0.jpg)](http://www.youtube.com/watch?v=qt_4rCQwbmEQ) 
